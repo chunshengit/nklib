@@ -135,9 +135,9 @@ form_urldecode([], Acc) ->
 form_urldecode([Term|Rest], Acc) ->
     {Key, Val} = case binary:split(Term, <<$=>>) of
         [Key0, Val0] ->
-            {uri_strong:unquote(Key0), uri_strong:unquote(Val0)};
+            {uri_string:unquote(Key0), uri_string:unquote(Val0)};
         [Key0] ->
-            {uri_strong:unquote(Key0), <<>>}
+            {uri_string:unquote(Key0), <<>>}
     end,
     form_urldecode(Rest, [{Key, Val}|Acc]).
 
